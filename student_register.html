@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register New Student</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Register New Student</h2>
+    <form action="/register-student" method="post" enctype="multipart/form-data">
+      <label>Name</label>
+      <input type="text" name="name" required>
+
+      <label>Roll Number</label>
+      <input type="text" name="roll_number" required>
+
+      <label>Upload Photos (At least 1, up to 4)</label>
+      <input type="file" name="photo1" accept="image/*" required>
+      <input type="file" name="photo2" accept="image/*" >
+      <input type="file" name="photo3" accept="image/*" >
+      <input type="file" name="photo4" accept="image/*" >
+
+      <input type="submit" value="Register Student">
+    </form>
+
+    <a href="/dashboard">Back to Dashboard</a>
+
+    {% if message %}
+    <p style="color:green;">{{ message }}</p>
+    {% elif error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>

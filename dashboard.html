@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Face Attendance</title>
+  <link rel="stylesheet" href="/static/style.css">
+
+  <style>
+    body {
+      background: #f5f7fa;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard-container {
+      width: 90%;
+      max-width: 700px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .button {
+      padding: 14px;
+      border-radius: 10px;
+      background: #0078ff;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: #005fcc;
+    }
+
+    .logout-btn {
+      margin-top: 25px;
+      padding: 12px;
+      background: #ff4747;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #d63939;
+    }
+
+    .alert-success {
+      width: 90%;
+      margin: 20px auto;
+      background: #d4edda;
+      color: #155724;
+      border-left: 5px solid #28a745;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .alert-success img {
+      margin-top: 10px;
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard-container">
+    <h2>Welcome, {{ teacher.name }}</h2>
+    <p class="subtitle">Subject: <strong>{{ teacher.subject }}</strong></p>
+
+    <div class="button-container">
+      <a href="/register-student" class="button">📌 Register Student</a>
+      <a href="/upload-attendance" class="button">📤 Upload Attendance</a>
+    </div>
+
+    <form action="/logout" method="post">
+      <button class="logout-btn">🚪 Logout</button>
+    </form>
+  </div>
+
+  {% if success_message %}
+  <div class="alert-success">
+      {{ success_message }}
+      {% if roll_number %}
+          <br>
+          <img src="/static/faces/{{ roll_number }}/1.jpg" alt="Student Photo">
+      {% endif %}
+  </div>
+  {% endif %}
+
+</body>
+</html>

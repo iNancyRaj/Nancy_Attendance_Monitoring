@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Class Image</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/dashboard">Back to Dashboard</a>
+        <h2>Upload Classroom Image</h2>
+
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="class_image">Class Image:</label>
+            <input type="file" name="image" id="class_image" accept="image/*" required>
+            <button type="submit">Mark Attendance</button>
+        </form>
+
+        <div id="progress-bar-container" style="display: none;">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text">0%</span>
+        </div>
+
+        <div id="results" style="display:none;">
+            <h3>Present Students (<span id="present-count">0</span>)</h3>
+            <div id="present-list" class="students-grid"></div>
+
+            <h3>Absent Students (<span id="absent-count">0</span>)</h3>
+            <div id="absent-list" class="students-grid"></div>
+
+            <form action="/attendance/export" method="get">
+                <button type="submit">Export Attendance Report</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
